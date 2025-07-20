@@ -1,22 +1,27 @@
 import pytest
-# TODO: add necessary import
+import pandas as pd
+import numpy as np
+import train_model
+from sklearn.ensemble import RandomForestClassifier
 
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
-    """
-    # add description for the first test
-    """
-    # Your code here
-    pass
+df = pd.read.csv("data/census.csv")
 
+def test_data_shape(df):
+    """
+    # Test that data has no null values
+    """
+    assert df.shape==df.dropna().shape, "Dropping nulls changes shape"
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_random_forest():
     """
-    # add description for the second test
+    # Test the models algorithm
     """
-    # Your code here
-    pass
+    X = np.array([[1, 2], [3, 4]])
+    y = np.arry([0,1])
+
+    model = train_model(X,y)
+
+    assert isinstance(model, RandomForestClassifier)
 
 
 # TODO: implement the third test. Change the function name and input as needed
